@@ -1,0 +1,29 @@
+1> react in docker
+
+//create Dockerfile in the root directory 
+-> Dockerfile 
+		-> FROM node:16
+		-> WORKDIR/app
+		-> COPY /package*.json ./
+		-> RUN npm install
+		-> COPY . .
+		-> CMD ["npm", "run", "start"]
+
+//our image is created and to check you can use
+-> docker image ls
+
+// now we will run our container
+->docker run --name <anycontainername> --rm <image-name>
+ex : -
+
+-> docker run --name ecommerce-container --rm ecommerce-image
+
+//but project will not run we need to map the ports
+-> docker run --rm --name ecommerce-container -d -p 3000:3000 ecommerce-image
+
+--here -d is for the detatched mode
+
+//to check the running containers 
+-> docker ps
+
+
